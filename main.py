@@ -38,7 +38,7 @@ def main():
                 exit()
             for bullet in shooting:
                 if asteroid.collision(bullet):
-                    asteroid.kill()
+                    asteroid.split()
                     bullet.kill()
             
 
