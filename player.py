@@ -39,7 +39,7 @@ class Player(CircleShape):
             self.timer = PLAYER_SHOOT_COOLDOWN
             
             
-                        
+                            
 
             
     def rotate(self, dt):
