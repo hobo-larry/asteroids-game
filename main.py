@@ -24,7 +24,11 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     dt = 0
+    score = 0
+    score_increment = 10
+    
     while True:
+        font = pygame.font.Font(None, 36)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
@@ -32,6 +36,7 @@ def main():
         
         dt = clock.tick(60) / 1000 
         updatable.update(dt)
+        
         for asteroid in asteroids:
             if asteroid.collision(player):
                 print("Game over!")
@@ -40,12 +45,15 @@ def main():
                 if asteroid.collision(bullet):
                     asteroid.split()
                     bullet.kill()
+                    score += score_increment
             
 
 
         
         for obj in drawable:
             obj.draw(screen)
+        score_text = font.render(f'Score: {score}', True, (255, 255, 255))
+        screen.blit(score_text, (10, 10))
         pygame.display.flip()
         
         
